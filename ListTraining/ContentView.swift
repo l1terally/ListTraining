@@ -2,20 +2,31 @@
 //  ContentView.swift
 //  ListTraining
 //
-//  Created by Юрий  Лизунов on 24/01/23.
+//  Created by Юрий  Лизунов on 29/01/23.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        List{
+            Section{
+            Text("TODAY")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                ForEach(tasksList, id: \.id) { lTasks in
+                    LongCard(lTasks: lTasks)
+                }
+            }.listRowSeparator(.hidden)
+            Section{
+            Text("TOMORROW")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                ForEach(tasksList, id: \.id) { lTasks in
+                    LongCard(lTasks: lTasks)
+                }
+            }.listRowSeparator(.hidden)
+        }.listStyle(.inset)
     }
 }
 
@@ -24,3 +35,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
